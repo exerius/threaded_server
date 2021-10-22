@@ -1,3 +1,4 @@
+#Клиент сервера с упр.потоком
 import socket
 
 sock = socket.socket()
