@@ -1,3 +1,4 @@
+#Клиент эхо-сервера
 import socket
 
 sock = socket.socket()
