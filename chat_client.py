@@ -1,3 +1,4 @@
+#Клиент для чата
 import socket, threading
 
 def listenig():
