@@ -2,7 +2,7 @@
 import socket
 
 sock = socket.socket()
-sock.connect(("127.0.0.1", 9091))
+sock.connect(("127.0.0.1", 9090))
 while True:
         line = input("Введите сообщение")
         sock.send(line.encode())
