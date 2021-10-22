@@ -1,7 +1,8 @@
+#Многопоточный эхо-сервер
 import socket, threading
 
 
-def echo(connection):
+def echo(connection): #поток для каждого из клиентов
     while True:
         data = connection.recv(1024)
         decoded_data = data.decode()
@@ -19,5 +20,5 @@ conns = []
 while True:
     i, addr = sock.accept()
     conns.append(i)
-    threading.Thread(target=echo, args=[i]).start()
+    threading.Thread(target=echo, args=[i]).start() # создаем поток при подключении нового клиента
 
