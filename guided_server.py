@@ -1,7 +1,8 @@
+#Сервер с упр. потоком
 import socket, threading
 
 
-def listening():
+def listening(): #прослушивание сообщений и ответ на них
     while True:
         known = {}
         try:
@@ -31,7 +32,7 @@ def listening():
             with open("logs.txt", "w") as file:
                 file.write(f"{known[addr[0]]} logged in")
         while True:
-            event.wait()
+            event.wait() #пауза
             data = conn.recv(1024)
             decoded = data.decode()
             if decoded == "exit":
@@ -39,16 +40,15 @@ def listening():
                 break
             else:
                 conn.send(data)
-            event.wait()
+            event.wait() #пауза 
 
 
-event = threading.Event()
+event = threading.Event() # threading.event помогает останавливать потоки по команде
 event.set()
-listen_thread = threading.Thread(target=listening)
-#listen_thread = threading.Thread(target=printing)
+listen_thread = threading.Thread(target=listening) #поток прослушивания
 command =""
 listen_thread.start()
-while True:
+while True: # команды
     command = input("Введите команду")
     if command == "quit":
         break
